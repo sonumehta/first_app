@@ -4,10 +4,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
 
+gem 'pg'
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
+  gem 'mysql2'
 end
 
 group :test do
@@ -15,8 +16,11 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
-
 group :production do
+  gem 'pg'
+end
+group :production do
+
   gem 'rails_12factor', '0.0.2'
 end
 # Use SCSS for stylesheets
