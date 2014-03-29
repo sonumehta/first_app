@@ -13,12 +13,4 @@
 
 ActiveRecord::Schema.define(version: 20140328172459) do
 
-  create_table "users", force: true do |t|
-    t.string "username"
-    t.string "encrypted_password"
-    t.string "email_id"
-    t.string "address"
-    t.string "phone_no"
-  end
-
 end

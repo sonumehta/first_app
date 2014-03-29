@@ -1,8 +1,18 @@
 class User < ActiveRecord::Base
 
+
+attr_accessor :username, :encrypted_password, :email_id, :address, :phone_no
 #  attr_accessor :password
 #attr_accessible :username, :password, :email_id, :address, :phone_no
 
+def initialize(attributes = {})
+    @username  = attributes[:username]
+    @email_id = attributes[:email_id]
+    @encrypted_passwordd = attributes[:encrypted_password]
+    @address =attributes[:address]
+    @phone_no= attributes[:phone_no]
+    @salt =attributes[:salt]
+end
 
   before_save :encrypt_password
   after_save :clear_password
@@ -15,6 +25,9 @@ class User < ActiveRecord::Base
 
   #attr_accessible :username, :email_id, :password, :password_confirmation
 
+def formatted_email
+    "#{@username} <#{@email_id}>"
+  end
 
   def authenticate(username_or_email_id="", login_password="")
 

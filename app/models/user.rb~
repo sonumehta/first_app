@@ -1,8 +1,18 @@
 class User < ActiveRecord::Base
 
+
+attr_accessor :username, :encrypted_password, :email_id, :address, :phone_no
 #  attr_accessor :password
 #attr_accessible :username, :password, :email_id, :address, :phone_no
 
+def initialize(attributes = {})
+    @username  = attributes[:username]
+    @email_id = attributes[:email_id]
+    @encrypted_passwordd = attributes[:encrypted_password]
+    @address =attributes[:address]
+    @phone_no= attributes[:phone_no]
+    @salt =attributes[:salt]
+end
 
   before_save :encrypt_password
   after_save :clear_password
@@ -42,13 +52,6 @@ def encrypt_password
   end
 
 
-def authenticate1(name, password)
-  if user = find_by_email_id(name)
-    if user.encrypted_password == encrypt_password(password, user.salt)
-      user
-    end
-  end
-end
   
   def clear_password
     self.encrypted_password = nil
