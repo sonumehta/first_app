@@ -1,0 +1,16 @@
+<% provide(:title, 'About Us') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShopMore-Online shopping website | <%= yield(:title) %></title>
+  </head>
+  <body>
+    <h1>About Us</h1>
+    <p>
+      The <a href="http://shopmorehere.herokuapp.com/">ShopMore-Online shopping website</a>
+      is a project to make an online shopping website. 
+    </p>
+  </body>
+</html>
+
+
