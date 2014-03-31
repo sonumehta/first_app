@@ -1,15 +1,8 @@
-<% provide(:title, 'Help') %>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ShopMore-Online shopping website |  <%= yield(:title) %></title>
-  </head>
-  <body>
+
     <h1>Help</h1>
     <p>
       Get help on the ShopMore-Online shopping website at the
       phone-no :9874563210
       
     </p>
-  </body>
-</html>
+

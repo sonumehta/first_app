@@ -16,11 +16,14 @@ end
 
   before_save :encrypt_password
   after_save :clear_password
+before_save { self.email_id = email_id.downcase }
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
-  validates :email_id, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
-  #Only on Create so other actions like update password attribute can be nil
+  
+validates :email_id, presence: true, format: { with: EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }  
+#Only on Create so other actions like update password attribute can be nil
   validates_length_of :encrypted_password, :in => 6..20, :on => :create
 
   #attr_accessible :username, :email_id, :password, :password_confirmation

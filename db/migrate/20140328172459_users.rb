@@ -7,7 +7,7 @@ class Users < ActiveRecord::Migration
 		t.string :address
 		t.string :salt
 		t.string :phone_no
-	
+	t.timestamps
 	end
 end
 end

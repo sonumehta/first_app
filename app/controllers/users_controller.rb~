@@ -7,15 +7,20 @@ class UsersController < ApplicationController
 		params.permit!
 		@user = User.new(params[:user].permit(:username,  :encrypted_password,:email_id, :address, :phone_no))
 		if @user.save
-			#flash[:notice] = "You signed up successfully"
-			#flash[:color]= "valid"
+			flash[:notice] = "You signed up successfully"
+			flash[:color]= "valid"
 		else
-			#flash[:notice] = "Form is invalid"
-			#flash[:color]= "invalid"
+			flash[:notice] = "Form is invalid"
+			flash[:color]= "invalid"
 		end
 		render "new"
 	end
 	
+	def show
+	    @user = User.find(params[:id])
+ end
+
+
 	private
 
     def user_params

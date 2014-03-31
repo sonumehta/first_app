@@ -5,16 +5,19 @@ ShopMore::Application.routes.draw do
   match '/aboutus',   to: 'static_pages#aboutus',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   
-	resources :users
+resources :users
+  match '/signup',  to: 'users#new',            via: 'get'
 	
-  get "users/new"
+
 
 resources :sessions, only: [:new, :create, :destroy]
-  root  'static_pages#home'
-match '/', to: 'static_pages#home', via: 'get'
-  match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+
+
+  root  'static_pages#home'
+match '/', to: 'static_pages#home', via: 'get'
+
   
   
   # The priority is based upon order of creation: first created -> highest priority.
